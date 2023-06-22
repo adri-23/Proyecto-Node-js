@@ -1,24 +1,22 @@
+//importar mysql
+
 import mysql from 'mysql'
 
+//crear la conexion 
+const conector = mysql.createConnection(
+    {
+     host:'localhost',
+     user: 'root',
+     password: '970603',
+     database: 'quickaccessdb'
+    }
+) 
 
-const connection = mysql.createConnection({
-host: 'localhost',
-user: 'root',
-password: '970603',
-database: 'quickaccessdb'
-});
-
-const conectar = () =>
-connection.connect((err) => {
-if (err) 
-    console.error('Error al conectar a la base de datos: ' + err.stack);
-    return;
+const conectar = () =>{
+    conector.connect(err => {
+        if(err) throw err
+        console.log('conectado ')
+    })
 }
 
-//console.log('Conexión exitosa a la base de datos MySQL')
-);
- 
-
-export {conectar}
-
-
+export{conectar}
